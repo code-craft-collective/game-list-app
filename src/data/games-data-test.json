@@ -1,0 +1,184 @@
+{
+  "video_games": [
+    {
+      "id": 1,
+      "name": "The Last of Us Part II",
+      "release_date": "2020-06-19",
+      "genre": "Action-Adventure",
+      "rating": 9.5,
+      "description": "Set in a post-apocalyptic world, follow Ellie's journey for vengeance and survival.",
+      "platform": "PlayStation 4"
+    },
+    {
+      "id": 2,
+      "name": "Cyberpunk 2077",
+      "release_date": "2020-12-10",
+      "genre": "Action RPG",
+      "rating": 7.0,
+      "description": "Explore the vast open world of Night City in this futuristic RPG.",
+      "platform": "PlayStation 5, Xbox Series X/S, PC"
+    },
+    {
+      "id": 3,
+      "name": "Ghost of Tsushima",
+      "release_date": "2020-07-17",
+      "genre": "Action-Adventure",
+      "rating": 9.2,
+      "description": "Embark on a journey as Jin Sakai, a samurai warrior, to protect Tsushima Island.",
+      "platform": "PlayStation 4"
+    },
+    {
+      "id": 4,
+      "name": "Animal Crossing: New Horizons",
+      "release_date": "2020-03-20",
+      "genre": "Life Simulation",
+      "rating": 9.0,
+      "description": "Create your own paradise on a deserted island and interact with charming animal villagers.",
+      "platform": "Nintendo Switch"
+    },
+    {
+      "id": 5,
+      "name": "Demon's Souls",
+      "release_date": "2020-11-12",
+      "genre": "Action RPG",
+      "rating": 9.4,
+      "description": "Remake of the classic action RPG, challenging players in the kingdom of Boletaria.",
+      "platform": "PlayStation 5"
+    },
+    {
+      "id": 6,
+      "name": "Hades",
+      "release_date": "2020-09-17",
+      "genre": "Action Roguelike",
+      "rating": 9.7,
+      "description": "Escape the underworld as Zagreus in this critically acclaimed roguelike game.",
+      "platform": "Nintendo Switch, PC"
+    },
+    {
+      "id": 7,
+      "name": "Spider-Man: Miles Morales",
+      "release_date": "2020-11-12",
+      "genre": "Action-Adventure",
+      "rating": 8.8,
+      "description": "Play as Miles Morales, a new Spider-Man, and protect New York City from threats.",
+      "platform": "PlayStation 4, PlayStation 5"
+    },
+    {
+      "id": 8,
+      "name": "Assassin's Creed Valhalla",
+      "release_date": "2020-11-10",
+      "genre": "Action RPG",
+      "rating": 8.5,
+      "description": "Lead your Viking clan across the icy waters of England in search of glory.",
+      "platform": "PlayStation 5, Xbox Series X/S, PC"
+    },
+    {
+      "id": 9,
+      "name": "Genshin Impact",
+      "release_date": "2020-09-28",
+      "genre": "Action RPG",
+      "rating": 8.9,
+      "description": "Embark on an epic journey across the fantasy world of Teyvat, mastering the elements.",
+      "platform": "PlayStation 4, PC, Mobile"
+    },
+    {
+      "id": 10,
+      "name": "Among Us",
+      "release_date": "2018-06-15",
+      "genre": "Party",
+      "rating": 9.0,
+      "description": "Play with friends online as a crewmate or impostor in this social deduction game.",
+      "platform": "PC, Mobile"
+    },
+    {
+      "id": 11,
+      "name": "Hitman 3",
+      "release_date": "2021-01-20",
+      "genre": "Stealth",
+      "rating": 8.7,
+      "description": "Become the ultimate assassin and eliminate targets in various locations around the world.",
+      "platform": "PlayStation 5, Xbox Series X/S, PC"
+    },
+    {
+      "id": 12,
+      "name": "Call of Duty: Black Ops Cold War",
+      "release_date": "2020-11-13",
+      "genre": "First-Person Shooter",
+      "rating": 8.3,
+      "description": "Experience the intense and gripping action of the Cold War era in this FPS game.",
+      "platform": "PlayStation 5, Xbox Series X/S, PC"
+    },
+    {
+      "id": 13,
+      "name": "Minecraft Dungeons",
+      "release_date": "2020-05-26",
+      "genre": "Action-Adventure",
+      "rating": 8.0,
+      "description": "Explore dungeons, defeat monsters, and collect loot in this Minecraft-themed action RPG.",
+      "platform": "PlayStation 4, Xbox One, Nintendo Switch, PC"
+    },
+    {
+      "id": 14,
+      "name": "Final Fantasy VII Remake",
+      "release_date": "2020-04-10",
+      "genre": "Action RPG",
+      "rating": 9.3,
+      "description": "Relive the iconic journey of Cloud Strife and his allies in this modern retelling of the classic RPG.",
+      "platform": "PlayStation 4"
+    },
+    {
+      "id": 15,
+      "name": "Marvel's Avengers",
+      "release_date": "2020-09-04",
+      "genre": "Action-Adventure",
+      "rating": 7.8,
+      "description": "Assemble a team of superheroes and save the world from various threats.",
+      "platform": "PlayStation 4, Xbox One, PC"
+    },
+    {
+      "id": 16,
+      "name": "Death Stranding",
+      "release_date": "2019-11-08",
+      "genre": "Action-Adventure",
+      "rating": 8.6,
+      "description": "Navigate a post-apocalyptic world and reconnect isolated cities in this unique open-world game.",
+      "platform": "PlayStation 4, PC"
+    },
+    {
+      "id": 17,
+      "name": "Tony Hawk's Pro Skater 1 + 2",
+      "release_date": "2020-09-04",
+      "genre": "Sports",
+      "rating": 9.0,
+      "description": "Remaster of the classic skateboarding games featuring iconic levels and skaters.",
+      "platform": "PlayStation 4, Xbox One, PC"
+    },
+    {
+      "id": 18,
+      "name": "Control",
+      "release_date": "2019-08-27",
+      "genre": "Action-Adventure",
+      "rating": 8.9,
+      "description": "Unravel the mysteries of the Federal Bureau of Control and harness supernatural abilities.",
+      "platform": "PlayStation 4, Xbox One, PC"
+    },
+    {
+      "id": 19,
+      "name": "Yakuza: Like a Dragon",
+      "release_date": "2020-11-10",
+      "genre": "Action RPG",
+      "rating": 8.7,
+      "description": "Experience the new turn-based combat system in the latest installment of the Yakuza series.",
+      "platform": "PlayStation 4, Xbox Series X/S, PC"
+    },
+    {
+      "id": 20,
+      "name": "Doom Eternal",
+      "release_date": "2020-03-20",
+      "genre": "First-Person Shooter",
+      "rating": 9.1,
+      "description": "Rip and tear through hordes of demons in this fast-paced FPS game.",
+      "platform": "PlayStation 4, Xbox One, PC"
+    }
+  ]
+}
