@@ -1,8 +1,1 @@
-body {
-}
 
-@media (prefers-color-scheme: dark) {
-  .dark {
-    @apply bg-gray-900 text-white;
-  }
-}

@@ -18,43 +18,7 @@ const Toast = ({ color = "red" }) => {
   const toastStyle = {
     backgroundColor: color,
     color: "white",
-    padding: "1rem",import React, { useState, useEffect } from 'react';
-
-    const ThemeSwitcher = () => {
-      const [darkMode, setDarkMode] = useState(false);
-    
-      useEffect(() => {
-        const isDarkMode = localStorage.getItem('darkMode') === 'true';
-        setDarkMode(isDarkMode);
-      }, []);
-    
-      useEffect(() => {
-        document.documentElement.classList.toggle('dark', darkMode);
-        localStorage.setItem('darkMode', darkMode);
-      }, [darkMode]);
-    
-      const toggleDarkMode = () => {
-        setDarkMode((prevMode) => !prevMode);
-      };
-    
-      return (
-        <div className="flex justify-center items-center h-screen">
-          <button
-            onClick={toggleDarkMode}
-            className={`px-4 py-2 rounded-full ${
-              darkMode ? 'bg-yellow-400' : 'bg-gray-800'
-            } ${
-              darkMode ? 'text-gray-900' : 'text-white'
-            } transition-colors duration-200`}
-          >
-            {darkMode ? 'Light Mode' : 'Dark Mode'}
-          </button>
-        </div>
-      );
-    };
-    
-    export default ThemeSwitcher;
-    
+    padding: "1rem",
     borderRadius: "0.5rem",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     opacity: 1,
