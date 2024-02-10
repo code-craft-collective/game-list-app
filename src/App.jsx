@@ -8,9 +8,10 @@ import { useTheme } from "./components/ThemeContext";
 function App() {
   const { darkMode } = useTheme();
   return (
-    <div className={darkMode ? "dark" : "light"}>
+    <div className={darkMode ? "dark" : ""}>
       <ThemeSwitcher />
       <Navbar />
+      <div className="content"></div>
       <Footer />
     </div>
   );
