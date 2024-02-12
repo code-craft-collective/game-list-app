@@ -8,7 +8,7 @@ import { useTheme } from "./components/ThemeContext";
 function App() {
   const { darkMode } = useTheme();
   return (
-    <div className={darkMode ? "dark" : ""}>
+    <div className={darkMode ? "dark" : "light"}>
       <ThemeSwitcher />
       <Navbar />
       <div className="content"></div>
