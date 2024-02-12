@@ -10,29 +10,24 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 import Toast from "./components/Toast";
 import "./App.css";
 
-
-
 function App() {
   const { darkMode } = useTheme();
   return (
-
     <div className={darkMode ? "dark" : "light"}>
       <ThemeSwitcher />
       <Navbar />
       <div className="content"></div>
 
-    <div className="App">
-      <Navbar />
+      <div className="App">
+        <Navbar />
 
+        <Footer />
+        <ProductDetailPage />
 
-
-      <Footer />
-      <ProductDetailPage />
-
-      <GamesList />
-      <Footer />
-      <Toast />
-
+        <GamesList />
+        <Footer />
+        <Toast />
+      </div>
     </div>
   );
 }
