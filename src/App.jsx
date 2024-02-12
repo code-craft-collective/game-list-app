@@ -14,19 +14,15 @@ function App() {
   const { darkMode } = useTheme();
   return (
     <div className={darkMode ? "dark" : "light"}>
-      <ThemeSwitcher />
-      <Navbar />
+      {/* <ThemeSwitcher /> */}
       <div className="content"></div>
 
       <div className="App">
         <Navbar />
-
-        <Footer />
-        <ProductDetailPage />
-
+        {/* <ProductDetailPage /> */}
         <GamesList />
         <Footer />
-        <Toast />
+        <Toast />t{" "}
       </div>
     </div>
   );
