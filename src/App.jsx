@@ -7,32 +7,19 @@ import { useTheme } from "./components/ThemeContext";
 
 import ProductDetailPage from "./pages/ProductDetailPage";
 
-import Toast from "./components/Toast";
 import "./App.css";
-
-
+import Toast from "./components/Toast";
+import RoutesRender from "./routes";
 
 function App() {
   const { darkMode } = useTheme();
   return (
-
-    <div className={darkMode ? "dark" : "light"}>
+    <div className={darkMode ? "dark" : "light" + " App"}>
       <ThemeSwitcher />
       <Navbar />
-      <div className="content"></div>
-
-    <div className="App">
-      <Navbar />
-
-
-
-      <Footer />
-      <ProductDetailPage />
-
-      <GamesList />
+      <RoutesRender />
       <Footer />
       <Toast />
-
     </div>
   );
 }
