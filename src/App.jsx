@@ -4,7 +4,6 @@ import Footer from "./components/Footer";
 import { useTheme } from "./components/ThemeContext";
 
 import ProductDetailPage from "./pages/ProductDetailPage";
-
 import "./App.css";
 import SearchBar from "./components/SearchBar";
 
@@ -18,17 +17,10 @@ function App() {
     <div className={darkMode ? "dark" : "light" + " App"}>
       <ThemeSwitcher />
       <Navbar />
-
       <SearchBar />
       <RoutesRender />
       <Footer />
       <Toast />
-
-      <div className="content"></div>
-
-      <ProductDetailPage />
-
-      <GamesList />
     </div>
   );
 }
