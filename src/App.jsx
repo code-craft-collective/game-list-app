@@ -10,6 +10,7 @@ import SearchBar from "./components/SearchBar";
 
 import Toast from "./components/Toast";
 import RoutesRender from "./routes";
+import GamesList from "./pages/GamesList";
 
 function App() {
   const { darkMode } = useTheme();
