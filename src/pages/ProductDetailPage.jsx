@@ -1,4 +1,3 @@
-// ProductDetailPage.jsx
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -7,7 +6,9 @@ function ProductDetailPage() {
 
   useEffect(() => {
     axios
-      .get("https://api.rawg.io/api/games/3498?token&key=aaae3e1f5d0048e39b73bb253978b5c0")
+      .get(
+        "https://api.rawg.io/api/games/3498?token&key=aaae3e1f5d0048e39b73bb253978b5c0"
+      )
       .then((response) => {
         const oneProduct = response.data;
         setProduct(oneProduct);
