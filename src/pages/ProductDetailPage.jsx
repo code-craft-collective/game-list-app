@@ -16,6 +16,26 @@ function ProductDetailPage() {
       .catch((error) => console.log(error));
   }, []);
 
+  const handleAddToFavorites = async () => {
+    try {
+      await axios.post("https://game-app-backend.adaptable.app/saved-games/", {
+        id: product.id,
+        name: product.name,
+        image: product.background_image,
+        website: product.website,
+        rating: product.metacritic,
+        description: product.description,
+        "release-date": product.released,
+        platforms: product.platforms.map((platform) => platform.platform.name),
+        genres: product.genres.map((genre) => genre.name),
+      });
+      alert("Game added to favorites successfully!");
+    } catch (error) {
+      console.error("Error adding game to favorites:", error);
+      alert("Failed to add game to favorites. Please try again later.");
+    }
+  };
+
   return (
     <div className="container mx-auto mt-8 flex flex-col items-center bg-gray-800 text-white p-8 rounded-md">
       <div className="mb-4">
@@ -32,6 +52,12 @@ function ProductDetailPage() {
         >
           Visit Website
         </a>
+        <button
+          onClick={handleAddToFavorites}
+          className="ml-4 bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-300"
+        >
+          Add to Favorites
+        </button>
       </div>
       <div className="flex-grow">
         <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
