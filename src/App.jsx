@@ -17,27 +17,10 @@ function App() {
     <div className={darkMode ? "dark" : "light" + " App"}>
       <ThemeSwitcher />
       <Navbar />
-
       <SearchBar />
       <RoutesRender />
       <Footer />
       <Toast />
-
-    <div className={darkMode ? "dark" : "light"}>
-      <ThemeSwitcher />
-      <Navbar />
-      <div className="content"></div>
-
-      <div className="App">
-        <Navbar />
-
-        <Footer />
-        <ProductDetailPage />
-
-        <GamesList />
-        <Footer />
-        <Toast />
-      </div>
     </div>
   );
 }
