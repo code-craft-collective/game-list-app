@@ -10,11 +10,11 @@ import SearchBar from "./components/SearchBar";
 
 import Toast from "./components/Toast";
 import RoutesRender from "./routes";
+import GamesList from "./pages/GamesList";
 
 function App() {
   const { darkMode } = useTheme();
   return (
-
     <div className={darkMode ? "dark" : "light" + " App"}>
       <ThemeSwitcher />
       <Navbar />
@@ -24,16 +24,12 @@ function App() {
       <Footer />
       <Toast />
 
-
       <div className="content"></div>
 
-     
+      <ProductDetailPage />
 
-        <ProductDetailPage />
-
-        <GamesList />
-
-      </div>
+      <GamesList />
+    </div>
   );
 }
 
