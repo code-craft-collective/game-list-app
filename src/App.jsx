@@ -14,14 +14,6 @@ import RoutesRender from "./routes";
 function App() {
   const { darkMode } = useTheme();
   return (
-
-    <div className={darkMode ? "dark" : "light" + " App"}>
-      <ThemeSwitcher />
-      <Navbar />
-      <RoutesRender />
-      <Footer />
-      <Toast />
-
     <div className={darkMode ? "dark" : "light"}>
       <ThemeSwitcher />
       <Navbar />
