@@ -2,14 +2,10 @@ import ThemeSwitcher from "./components/ThemeSwitcher";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useTheme } from "./components/ThemeContext";
-
-import ProductDetailPage from "./pages/ProductDetailPage";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
-
 import Toast from "./components/Toast";
 import RoutesRender from "./routes";
-import GamesList from "./pages/GamesList";
 
 function App() {
   const { darkMode } = useTheme();
