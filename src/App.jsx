@@ -1,25 +1,41 @@
+import ThemeSwitcher from "./components/ThemeSwitcher";
 import Navbar from "./components/Navbar";
 import GamesList from "./pages/GamesList";
 import Footer from "./components/Footer";
+import { useTheme } from "./components/ThemeContext";
 
 import ProductDetailPage from "./pages/ProductDetailPage";
 
-import Toast from "./components/Toast";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
-import { useState } from "react";
+
+import Toast from "./components/Toast";
+import RoutesRender from "./routes";
 
 function App() {
+  const { darkMode } = useTheme();
   return (
-    <div className="App">
+
+    <div className={darkMode ? "dark" : "light" + " App"}>
+      <ThemeSwitcher />
       <Navbar />
-      <Footer />
-      <ProductDetailPage />
-      <GamesList />
+
+      <SearchBar />
+      <RoutesRender />
       <Footer />
       <Toast />
-      <SearchBar />
-    </div>
+
+
+      <div className="content"></div>
+
+     
+
+        <ProductDetailPage />
+
+        <GamesList />
+
+      </div>
+
   );
 }
 
