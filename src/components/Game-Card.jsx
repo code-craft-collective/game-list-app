@@ -4,10 +4,8 @@ export default function GameCard(props) {
   const { id, name, image, rating, genre, platforms } = props;
 
   return (
-    //ADD LINK to game details page
-
-    <Link to={`/games/${id}`}>
-      <div className="game-card p-10 m-10 border border-solid border-black">
+    <div className="game-card p-10 m-10 border border-solid border-black">
+      <Link to={`/games/${id}`}>
         <h3 className="text-xl my-2">{name}</h3>
         <div className="w-64">
           <img src={image} className="my-3 w-auto" alt="thumbnail" />
@@ -23,7 +21,7 @@ export default function GameCard(props) {
             </p>
           ))}
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
