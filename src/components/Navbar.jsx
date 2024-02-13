@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import ProfPic from "../assets/ProfPic.jpg";
+import SearchBar from "./SearchBar"
+import ButtonThemeSwitcher from "./ButtonThemeSwitcher";
 
 const Navbar = () => {
   return (
@@ -16,7 +18,11 @@ const Navbar = () => {
           <Link to="Games" className="hover:text-gray-300">
             Games
           </Link>
+          <ButtonThemeSwitcher />
         </div>
+        {/* <div>
+          <SearchBar />
+        </div> */}
         <div>
           <Link to="/profile">
             <img

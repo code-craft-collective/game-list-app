@@ -3,11 +3,14 @@ import React from "react";
 const Footer = () => {
   return (
     <div className="border border-red">
-      <footer className="absolute bottom-0 text-2xl font-bold rounded-s-3xl border-8 rounded-3xl w-full bg-slate-900">
-        <p>GitHub</p>
-        <p>B</p>
-        <p>C</p>
-        <img></img>
+      <footer className="flex flex-row justify-between px-10 py-3 w-full bg-slate-900">
+        <div className="text-white flex flex-row">
+          <p className="mx-2">GitHub</p>
+          <p className="mx-2">LinkedIn</p>
+        </div>
+        <div className="text-white">
+          <h3>Logo</h3>
+        </div>
       </footer>
     </div>
   );

@@ -24,19 +24,24 @@ const SearchBar = () => {
     fetchData();
   };
   console.log(results);
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="relative w-full h-16 border-none rounded-full p-4 shadow-md bg-white flex items-center">
-        <input
-          placeholder="Type to search..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          className="bg-transparent border-none h-full flex-grow ml-10 focus:outline-none"
-        />
-        <FaSearch className="absolute left-4 text-blue-500" />
-      </div>
-      {results && results.length > 0 && <SearchResultsList results={results} />}
-    </form>
+    <div className="px-40">
+      <form onSubmit={handleSubmit}>
+        <div className="relative h-16 border-none rounded-full shadow-md bg-white flex items-center">
+          <input
+            placeholder="Type to search..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="bg-transparent border-none h-full flex-grow ml-10 focus:outline-none"
+          />
+          <FaSearch className="absolute left-4 text-blue-500" />
+        </div>
+        {results && results.length > 0 && (
+          <SearchResultsList results={results} />
+        )}
+      </form>
+    </div>
   );
 };
 

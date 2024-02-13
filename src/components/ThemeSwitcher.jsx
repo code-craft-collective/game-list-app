@@ -1,30 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTheme } from "./ThemeContext";
 
-const ThemeSwitcher = () => {
-  const { darkMode, toggleDarkMode } = useTheme();
+const ThemeSwitcher = (props) => {
+  const { darkMode } = useTheme();
 
   return (
     <div
-      className={`flex justify-center items-center h-screen ${
+      className={`flex justify-center items-center overflow-hidden h-screen ${
         darkMode ? "dark:bg-gray-800" : "bg-gray-100"
       }`}
     >
       <div
-        className={`flex justify-center items-center h-screen ${
+        className={`flex flex-col items-center w-screen overflow-hidden ${
           darkMode ? "dark" : ""
         }`}
       >
-        <button
-          onClick={toggleDarkMode}
-          className={`px-4 py-2 rounded-full ${
-            darkMode ? "bg-white-400 dark:bg-white-800" : "bg-gray-800"
-          } ${
-            darkMode ? "text-gray-900 dark:text-gray-100" : "text-white"
-          } transition-colors duration-200`}
-        >
-          {darkMode ? "☀︎" : "☾"}
-        </button>
+        <div className="border border-solid border-green-600 w-full">
+          {props.children}
+        </div>
       </div>
     </div>
   );

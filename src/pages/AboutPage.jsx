@@ -1,6 +1,6 @@
 const AboutPage = () => {
   return (
-    <div className="container mx-auto mt-8 p-4">
+    <div className="container border border-red-600 h-screen mx-auto pt-40">
       <h1 className="text-4xl font-bold mb-6">About Us</h1>
       <p className="text-gray-800 mb-4">
         Welcome to our game viewing website! We are a team of four enthusiastic

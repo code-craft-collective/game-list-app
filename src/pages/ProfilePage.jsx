@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ProfPic from "../assets/ProfPic.jpg";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 const ProfilePage = () => {
   const userData = {
@@ -33,7 +34,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8 p-4">
+    <div className="container h-screen mx-auto mt-40 p-4">
       <img
         src={ProfPic}
         alt="Profile Image"
