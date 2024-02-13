@@ -19,7 +19,7 @@ export default function GamesList() {
   }, []);
 
   return (
-    <div className="games-list">
+    <div className="flex flex-wrap justify-evenly h-screen overflow-auto">
       {list.map((result) => (
         <GameCard
           key={result.id}
@@ -27,17 +27,12 @@ export default function GamesList() {
           name={result.name}
           image={result.background_image}
           rating={result.metacritic}
+          platforms={result.platforms}
           genre={result.genres.map((e, i) => {
             if (i === result.genres.length - 1) {
               return e.name;
             }
             return e.name + ", ";
-          })}
-          platform={result.platforms.map((e, i) => {
-            if (i === result.platforms.length - 1) {
-              return e.platform.name;
-            }
-            return e.platform.name + ", ";
           })}
         />
       ))}
