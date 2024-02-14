@@ -20,7 +20,6 @@ function GameDetailsPage() {
       })
       .catch((err) => console.log(err));
   }, []);
-  console.log(game);
 
   const [savedGames, setSavedGames] = useState([]);
   const dbURL = `https://game-app-backend.adaptable.app/saved-games`;
@@ -33,8 +32,6 @@ function GameDetailsPage() {
       })
       .catch((err) => console.log(err));
   }, [savedGames]);
-
-  console.log("saved games: ", savedGames);
 
   const handleAddToFavorites = async () => {
     try {
