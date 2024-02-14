@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { routes } from "./routes-data";
 import React from "react";
+import ProfilePage from "../pages/ProfilePage";
 
 export default function RoutesRender() {
   return (
