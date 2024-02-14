@@ -3,7 +3,6 @@ import React, { useState } from "react";
 const EditForm = ({ game, onSubmit }) => {
   const [editedGame, setEditedGame] = useState(game);
 
-  // Ensure that platforms and genres are initialized as empty arrays if undefined
   if (!editedGame.platforms) {
     editedGame.platforms = [];
   }
@@ -83,7 +82,8 @@ const EditForm = ({ game, onSubmit }) => {
         <input
           type="date"
           name="release-date"
-          value={editedGame["release-date"]} // Change to square bracket notation
+      faves-list
+          value={editedGame["release-date"]}
           onChange={handleChange}
         />
       </label>

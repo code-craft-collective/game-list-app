@@ -11,7 +11,6 @@ const ProfilePage = () => {
   };
 
   const [isEditing, setEditing] = useState(false);
-
   const [editedUser, setEditedUser] = useState(userData);
 
   const toggleEditing = () => {
