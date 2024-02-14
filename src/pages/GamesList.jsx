@@ -35,13 +35,12 @@ export default function GamesList({ showFavorites }) {
   // if (!list.length || !favoritesList.length) return "loading...";
   if (isFavorites)
     return favoritesList.map((result) => {
-      console.log(result);
       return (
         <GameCard
           key={result.id}
           id={result.id}
           name={result.name}
-          image={result.background_image}
+          image={result.image}
           rating={result.metacritic}
           platforms={result.platforms}
           genre={result.genres.map((e, i) => {
