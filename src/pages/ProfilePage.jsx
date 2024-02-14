@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ProfPic from "../assets/ProfPic.jpg";
-
+import GamesList from "./GamesList";
 const ProfilePage = () => {
   const userData = {
     name: "John Doe",
@@ -103,12 +103,9 @@ const ProfilePage = () => {
             onChange={handleInputChange}
             className="border border-gray-300 p-2 w-full"
           />
-
         ) : (
           <GamesList showFavorites={true} />
         )}
-
-        ) : null}
       </div>
       <button
         onClick={toggleEditing}
