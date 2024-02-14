@@ -17,7 +17,7 @@ function App() {
           <RoutesRender />
           {/* <Toast /> */}
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </ThemeSwitcher>
     </div>
   );

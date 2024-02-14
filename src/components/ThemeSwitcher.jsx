@@ -15,9 +15,7 @@ const ThemeSwitcher = (props) => {
           darkMode ? "dark" : ""
         }`}
       >
-        <div className="border border-solid border-green-600 w-full">
-          {props.children}
-        </div>
+        <div className="w-full">{props.children}</div>
       </div>
     </div>
   );

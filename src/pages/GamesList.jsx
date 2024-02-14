@@ -25,7 +25,7 @@ export default function GamesList() {
   return (
     <div className="mt-60">
       <div
-        className={`h-screen overflow-scroll mt-10
+        className={`h-screen overflow-y-scroll mt-10
     ${darkMode ? "text-gray-900 dark:text-gray-100" : "text-gray-900"} 
     `}
       >
