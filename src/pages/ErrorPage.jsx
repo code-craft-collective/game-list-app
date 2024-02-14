@@ -17,7 +17,8 @@ const ErrorPage = () => {
       <div className="text-center space-y-6">
         <h1 className="text-4xl font-bold">404 - Not Found</h1>
         <p className="text-lg">
-          Sorry, the page you are looking for does not exist.
+          Sorry, the page you are looking for does not exist, head to home page
+          please
         </p>
         <a
           href="/"
