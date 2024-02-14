@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ProfPic from "../assets/ProfPic.jpg";
-import GamesList from "./GamesList";
 
 const ProfilePage = () => {
   const userData = {
@@ -29,9 +28,9 @@ const ProfilePage = () => {
 
   const saveChanges = () => {
     console.log("Changes saved:", editedUser);
-
     setEditing(false);
   };
+
   return (
     <div className="container mx-auto mt-8 p-4">
       <img
@@ -104,11 +103,13 @@ const ProfilePage = () => {
             onChange={handleInputChange}
             className="border border-gray-300 p-2 w-full"
           />
+
         ) : (
           <GamesList showFavorites={true} />
         )}
-      </div>
 
+        ) : null}
+      </div>
       <button
         onClick={toggleEditing}
         className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
@@ -126,4 +127,5 @@ const ProfilePage = () => {
     </div>
   );
 };
+
 export default ProfilePage;
