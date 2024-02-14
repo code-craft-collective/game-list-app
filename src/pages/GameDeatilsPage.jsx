@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
+import Toast from "../components/Toast";
 
 function GameDetailsPage() {
   const { gameID } = useParams();
-  console.log(gameID);
   const [game, setGame] = useState({});
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const url = `https://api.rawg.io/api/games/${gameID}?token&key=${
     import.meta.env.VITE_GAMES_API_KEY
@@ -31,13 +32,13 @@ function GameDetailsPage() {
         setSavedGames(resp.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [savedGames]);
 
   console.log("saved games: ", savedGames);
 
   const handleAddToFavorites = async () => {
     try {
-      await axios.post("https://game-app-backend.adaptable.app/saved-games/", {
+      await axios.post(dbURL, {
         id: game.id,
         name: game.name,
         image: game.background_image,
@@ -52,6 +53,17 @@ function GameDetailsPage() {
     } catch (error) {
       console.error("Error adding game to favorites:", error);
       alert("Failed to add game to favorites. Please try again later.");
+    }
+  };
+
+  const handleRemoveFromFavorites = async () => {
+    try {
+      await axios.delete(`${dbURL}/${gameID}`);
+      alert("Game removed from favorites successfully!");
+      setSavedGames(savedGames.filter((savedGame) => savedGame.id !== gameID));
+    } catch (error) {
+      console.error("Error removing game from favorites:", error);
+      alert("Failed to remove game from favorites. Please try again later.");
     }
   };
 
@@ -72,11 +84,16 @@ function GameDetailsPage() {
           Visit Website
         </a>
         <button
-          onClick={handleAddToFavorites}
+          onClick={
+            savedGames.some((e) => e.id === +gameID)
+              ? handleRemoveFromFavorites
+              : handleAddToFavorites
+          }
           className="ml-4 bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-300"
         >
-          {savedGames.some((e) => e.id === +gameID) ? "Remove" : "Add"} to
-          Favorites
+          {savedGames.some((e) => e.id === +gameID)
+            ? "Remove from Favorites"
+            : "Add to Favorites"}
         </button>
       </div>
       <div className="flex-grow">
