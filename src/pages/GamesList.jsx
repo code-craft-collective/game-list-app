@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import GameCard from "../components/Game-Card";
+import GameCardMain from "../components/GameCardMain";
 
 export default function GamesList({ showFavorites }) {
   const [list, setList] = useState([]);
@@ -25,17 +26,13 @@ export default function GamesList({ showFavorites }) {
       axios
         .get(dbURL)
         .then((resp) => {
-          // console.log(resp.data);
           setFavoritesList(resp.data);
         })
         .catch((err) => console.log(err));
     }
   }, [isFavorites]);
 
-  // console.log(favoritesList);
-  // return "hello world";
-
-  if (!list.length || !favoritesList.length) return "loading...";
+  // if (!list.length || !favoritesList.length) return "loading...";
   if (isFavorites)
     return favoritesList.map((result) => {
       console.log(result);
@@ -58,7 +55,7 @@ export default function GamesList({ showFavorites }) {
     });
 
   return list.map((result) => (
-    <GameCard
+    <GameCardMain
       key={result.id}
       id={result.id}
       name={result.name}

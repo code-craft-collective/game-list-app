@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-export default function GameCard(props) {
+export default function GameCardMain(props) {
   const { id, name, image, rating, genre, platforms } = props;
 
   const [savedGames, setSavedGames] = useState([]);
@@ -29,8 +29,8 @@ export default function GameCard(props) {
         <div className="w-30 my-3">
           <div className="text-ls">Platform: </div>
           {platforms.map((p, i) => (
-            <p key={i + p} className="text-sm">
-              {p}
+            <p key={i + p.platform.name} className="text-sm">
+              {p.platform.name}
             </p>
           ))}
         </div>
