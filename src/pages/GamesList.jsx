@@ -3,7 +3,6 @@ import axios from "axios";
 import GameCard from "../components/Game-Card";
 
 export default function GamesList({ showFavorites }) {
-
   const [list, setList] = useState([]);
   const [favoritesList, setFavoritesList] = useState([]);
   const [isFavorites, setIsFavorites] = useState(showFavorites);
@@ -26,48 +25,52 @@ export default function GamesList({ showFavorites }) {
       axios
         .get(dbURL)
         .then((resp) => {
-          console.log(resp.data);
-          setFavoritesList(resp.data.results);
+          // console.log(resp.data);
+          setFavoritesList(resp.data);
         })
         .catch((err) => console.log(err));
     }
   }, [isFavorites]);
 
-  return (
-    <div className="flex flex-wrap justify-evenly h-screen overflow-auto">
-      {isFavorites
-        ? favoritesList.map((result) => (
-            <GameCard
-              key={result.id}
-              id={result.id}
-              name={result.name}
-              image={result.background_image}
-              rating={result.metacritic}
-              platforms={result.platforms}
-              genre={result.genres.map((e, i) => {
-                if (i === result.genres.length - 1) {
-                  return e.name;
-                }
-                return e.name + ", ";
-              })}
-            />
-          ))
-        : list.map((result) => (
-            <GameCard
-              key={result.id}
-              id={result.id}
-              name={result.name}
-              image={result.background_image}
-              rating={result.metacritic}
-              platforms={result.platforms}
-              genre={result.genres.map((e, i) => {
-                if (i === result.genres.length - 1) {
-                  return e.name;
-                }
-                return e.name + ", ";
-              })}
-            />
-          ))}
-    </div>
-  );
+  // console.log(favoritesList);
+  // return "hello world";
+
+  if (!list.length || !favoritesList.length) return "loading...";
+  if (isFavorites)
+    return favoritesList.map((result) => {
+      console.log(result);
+      return (
+        <GameCard
+          key={result.id}
+          id={result.id}
+          name={result.name}
+          image={result.background_image}
+          rating={result.metacritic}
+          platforms={result.platforms}
+          genre={result.genres.map((e, i) => {
+            if (i === result.genres.length - 1) {
+              return e.name;
+            }
+            return e.name + ", ";
+          })}
+        />
+      );
+    });
+
+  return list.map((result) => (
+    <GameCard
+      key={result.id}
+      id={result.id}
+      name={result.name}
+      image={result.background_image}
+      rating={result.metacritic}
+      platforms={result.platforms}
+      genre={result.genres.map((e, i) => {
+        if (i === result.genres.length - 1) {
+          return e.name;
+        }
+        return e.name + ", ";
+      })}
+    />
+  ));
 }

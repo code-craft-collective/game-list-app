@@ -105,7 +105,7 @@ const ProfilePage = () => {
             className="border border-gray-300 p-2 w-full"
           />
         ) : (
-          <GamesList showFavorites={true} games={editedUser.MyGames} />
+          <GamesList showFavorites={true} />
         )}
       </div>
 
