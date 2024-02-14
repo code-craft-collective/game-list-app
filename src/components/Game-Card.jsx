@@ -1,7 +1,27 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
-
+import EditForm from "./Edit-Form";
 export default function GameCard(props) {
   const { id, name, image, rating, genre, platforms } = props;
+  const [showForm, setShowForm] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+
+  const [savedGames, setSavedGames] = useState([]);
+  const dbURL = `https://game-app-backend.adaptable.app/saved-games`;
+
+  useEffect(() => {
+    axios
+      .get(dbURL)
+      .then((resp) => {
+        setSavedGames(resp.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
 
   return (
     <div className="game-card p-10 m-10 border border-solid border-black">

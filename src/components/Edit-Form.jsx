@@ -82,6 +82,7 @@ const EditForm = ({ game, onSubmit }) => {
         <input
           type="date"
           name="release-date"
+      faves-list
           value={editedGame["release-date"]}
           onChange={handleChange}
         />

@@ -3,6 +3,7 @@ import axios from "axios";
 import GameCard from "../components/Game-Card";
 
 export default function GamesList({ showFavorites }) {
+
   const [list, setList] = useState([]);
   const [favoritesList, setFavoritesList] = useState([]);
   const [isFavorites, setIsFavorites] = useState(showFavorites);
