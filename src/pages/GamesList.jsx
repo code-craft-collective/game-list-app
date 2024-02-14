@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import GameCard from "../components/Game-Card";
 
+
 export default function GamesList() {
   const [list, setList] = useState([]);
   const url = `https://api.rawg.io/api/games?token&key=${

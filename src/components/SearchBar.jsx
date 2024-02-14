@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
-import SearchResultsList from "./SearchResultsList";
+import { Link } from "react-router-dom";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
@@ -14,16 +14,19 @@ const SearchBar = () => {
           import.meta.env.VITE_GAMES_API_KEY
         }&search=${input}`
       )
-      .then((response) => setResults(response.data.results))
+      .then((response) => {
+        setResults(response.data.results);
+        console.log(response.data);
+      })
+
       .catch((err) => console.error(err));
   };
 
   const handleSubmit = (e) => {
-    console.log("submitting");
     e.preventDefault();
     fetchData();
   };
-  console.log(results);
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="relative w-full h-16 border-none rounded-full p-4 shadow-md bg-white flex items-center">
@@ -35,7 +38,20 @@ const SearchBar = () => {
         />
         <FaSearch className="absolute left-4 text-blue-500" />
       </div>
-      {results && results.length > 0 && <SearchResultsList results={results} />}
+      {results && results.length > 0 && (
+        <div className="results-list bg-white flex flex-col shadow-md rounded-lg mt-4 max-h-300 overflow-y-auto">
+          {results.map((result) => (
+            <Link
+              key={result.id}
+              className="p-2 sm:p-4 cursor-pointer transition duration-300 ease-in-out transform hover:bg-gray-200"
+              to={`/games/${result.id}`}
+              onClick={() => (window.location.href = `/games/${result.id}`)}
+            >
+              {result.name}
+            </Link>
+          ))}
+        </div>
+      )}
     </form>
   );
 };
