@@ -103,6 +103,11 @@ const ProfilePage = () => {
             onChange={handleInputChange}
             className="border border-gray-300 p-2 w-full"
           />
+
+        ) : (
+          <GamesList showFavorites={true} />
+        )}
+
         ) : null}
       </div>
       <button

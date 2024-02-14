@@ -36,8 +36,8 @@ export default function GameCard(props) {
         <div className="w-30 my-3">
           <div className="text-ls">Platform: </div>
           {platforms.map((p, i) => (
-            <p key={i + p.platform.name} className="text-sm">
-              {p.platform.name}
+            <p key={i + p || p.platform.name} className="text-sm">
+              {p || p.platform.name}
             </p>
           ))}
         </div>
