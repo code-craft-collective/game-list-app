@@ -16,24 +16,69 @@ export default function GameCard(props) {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleAddToFavorites = async () => {
+    try {
+      await axios.post(dbURL, {
+        id,
+        name,
+        image,
+        rating,
+        genre,
+        platforms,
+      });
+    } catch (error) {
+      console.error("Error adding game to favorites:", error);
+    }
+  };
+
+  const handleRemoveFromFavorites = async () => {
+    try {
+      await axios.delete(`${dbURL}/${id}`);
+    } catch (error) {
+      console.error("Error removing game from favorites:", error);
+    }
+  };
+
   return (
-    <div className="w-64 p-3 m-3 border border-solid border-black inline-block">
-      <Link to={`/games/${id}`} className="block">
-        <h3 className="text-xl my-2">{name}</h3>
-        <div className="w-full">
-          <img src={image} className="my-3 w-full" alt="thumbnail" />
+    <div className="container mx-auto mt-8 ">
+      <div className="bg-gray-800 text-white p-8 rounded-md shadow-lg">
+        <div className="mb-4 ">
+          <img
+            src={image}
+            alt={name}
+            className="w-60 h-60 object-cover rounded-md shadow-md"
+          />
         </div>
-        <div className="text-lg">{genre}</div>
-        <p className="text-sm">Rating:{rating}</p>
-        <div className="w-full my-3">
-          <div className="text-ls">Platform: </div>
-          {platforms.map((p, i) => (
-            <p key={i + p} className="text-sm">
-              {p}
-            </p>
-          ))}
+        <div className="text-center mb-4 ">
+          <button
+            onClick={
+              savedGames.some((e) => e.id === +id)
+                ? handleRemoveFromFavorites
+                : handleAddToFavorites
+            }
+            className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-300 "
+          >
+            {savedGames.some((e) => e.id === +id)
+              ? "Remove from Favorites"
+              : "Add to Favorites"}
+          </button>
         </div>
-      </Link>
+        <div className="flex-grow ">
+          <h1 className="text-3xl font-bold mb-4">{name}</h1>
+          <div className=" rounded-md p-4 shadow-md bg-gray-800 text-white">
+            <p className="text-lg mb-2">Rating: {rating}</p>
+            <p className="text-lg mb-2">Genre: {genre}</p>
+            <div className="w-full my-3">
+              <div className="text-ls">Platform: </div>
+              {platforms.map((p, i) => (
+                <p key={i + p} className="text-sm">
+                  {p}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
