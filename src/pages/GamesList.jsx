@@ -22,14 +22,18 @@ export default function GamesList({ showFavorites }) {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleFetchProfile = () => {
+    console.log("getting profile...");
+    axios
+      .get(dbURL)
+      .then((resp) => {
+        setFavoritesList(resp.data);
+      })
+      .catch((err) => console.log(err));
+  };
   useEffect(() => {
     if (isFavorites) {
-      axios
-        .get(dbURL)
-        .then((resp) => {
-          setFavoritesList(resp.data);
-        })
-        .catch((err) => console.log(err));
+      handleFetchProfile();
     }
   }, [isFavorites]);
 
@@ -41,14 +45,10 @@ export default function GamesList({ showFavorites }) {
           id={result.id}
           name={result.name}
           image={result.image}
-          rating={result.metacritic}
+          rating={result.rating}
           platforms={result.platforms}
-          genre={result.genres.map((e, i) => {
-            if (i === result.genres.length - 1) {
-              return e.name;
-            }
-            return e.name + ", ";
-          })}
+          genres={result.genres}
+          handleFetchProfile={handleFetchProfile}
         />
       );
     });

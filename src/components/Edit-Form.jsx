@@ -1,113 +1,49 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
 
-const EditForm = ({ game, onSubmit }) => {
-  const [editedGame, setEditedGame] = useState(game);
+const API_URL = "https://game-app-backend.adaptable.app/saved-games/";
 
-  if (!editedGame.platforms) {
-    editedGame.platforms = [];
-  }
-  if (!editedGame.genres) {
-    editedGame.genres = [];
-  }
+export default function EditForm(props) {
+  const [rating, setRating] = useState(props.rating);
+  const { id, getProfile, toggleForm } = props;
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setEditedGame({
-      ...editedGame,
-      [name]: value,
-    });
-  };
-  const handleArrayChange = (e) => {
-    const { name, value } = e.target;
-    setEditedGame({
-      ...editedGame,
-      [name]: value.split(",").map((item) => item.trim()),
-    });
-  };
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/${id}`)
+      .then((response) => {
+        const game = response.data;
+        setRating(game.rating);
+      })
+      .catch((error) => console.log(error));
+  }, [id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(editedGame);
+    const requestBody = { rating };
+    axios.patch(`${API_URL}/${id}`, requestBody).then((response) => {
+      console.log(response);
+      props.getProfile();
+      getProfile();
+      toggleForm();
+      // navigate(`/projects/${id}`);
+    });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
+    <div className="edit-rating">
+      <form onSubmit={handleSubmit}>
+        <label>Rating:</label>
         <input
           type="text"
-          name="name"
-          value={editedGame.name}
-          onChange={handleChange}
+          name="number"
+          value={rating}
+          onChange={(e) => setRating(e.target.value)}
         />
-      </label>
-      <label>
-        Image:
-        <input
-          type="text"
-          name="image"
-          value={editedGame.image}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Website:
-        <input
-          type="text"
-          name="website"
-          value={editedGame.website}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Rating:
-        <input
-          type="number"
-          name="rating"
-          value={editedGame.rating}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Description:
-        <input
-          type="text"
-          name="description"
-          value={editedGame.description}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Release Date:
-        <input
-          type="date"
-          name="release-date"
-      faves-list
-          value={editedGame["release-date"]}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Platforms (separated by commas):
-        <input
-          type="text"
-          name="platforms"
-          value={editedGame.platforms.join(", ")}
-          onChange={handleArrayChange}
-        />
-      </label>
-      <label>
-        Genres (separated by commas):
-        <input
-          type="text"
-          name="genres"
-          value={editedGame.genres.join(", ")}
-          onChange={handleArrayChange}
-        />
-      </label>
-      <button type="submit">Save</button>
-    </form>
-  );
-};
 
-export default EditForm;
+        <button type="submit">Update</button>
+      </form>
+    </div>
+  );
+}
