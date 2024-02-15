@@ -1,42 +1,30 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import EditForm from "./Edit-Form";
 
 export default function GameCard(props) {
-  const { id, name, image, rating, genre, platforms } = props;
+  const { id, name, image, rating, genres, platforms, handleFetchProfile } =
+    props;
   const [savedGames, setSavedGames] = useState([]);
+  const [showForm, setShowForm] = useState(false);
   const dbURL = `https://game-app-backend.adaptable.app/saved-games`;
 
-  useEffect(() => {
+  const handleGetProfile = () => {
     axios
       .get(dbURL)
       .then((resp) => {
         setSavedGames(resp.data);
       })
       .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    handleGetProfile();
   }, []);
 
-  const handleAddToFavorites = async () => {
-    try {
-      await axios.post(dbURL, {
-        id,
-        name,
-        image,
-        rating,
-        genre,
-        platforms,
-      });
-    } catch (error) {
-      console.error("Error adding game to favorites:", error);
-    }
-  };
+  const toggleForm = () => {
+    setShowForm(!showForm);
 
-  const handleRemoveFromFavorites = async () => {
-    try {
-      await axios.delete(`${dbURL}/${id}`);
-    } catch (error) {
-      console.error("Error removing game from favorites:", error);
-    }
   };
 
   return (
@@ -63,22 +51,34 @@ export default function GameCard(props) {
               : "Add to Favorites"}
           </button>
         </div>
-        <div className="flex-grow ">
-          <h1 className="text-3xl font-bold mb-4">{name}</h1>
-          <div className=" rounded-md p-4 shadow-md bg-gray-800 text-white">
-            <p className="text-lg mb-2">Rating: {rating}</p>
-            <p className="text-lg mb-2">Genre: {genre}</p>
-            <div className="w-full my-3">
-              <div className="text-ls">Platform: </div>
-              {platforms.map((p, i) => (
-                <p key={i + p} className="text-sm">
-                  {p}
-                </p>
-              ))}
-            </div>
-          </div>
+
+        <div className="text-lg">Genres:</div>
+        {genres &&
+          genres.map((genre, i) => (
+            <p key={i} className="text-sm">
+              {genre}
+            </p>
+          ))}
+        <p className="text-sm">Rating: {rating}</p>
+        <div className="w-full my-3">
+          <div className="text-ls">Platform: </div>
+          {platforms.map((platform, i) => (
+            <p key={i} className="text-sm">
+              {platform}
+            </p>
+          ))}
         </div>
-      </div>
+      </Link>
+      <button onClick={toggleForm}>Edit Rating</button>
+      {showForm && (
+        <EditForm
+          id={id}
+          rating={rating}
+          getProfile={handleFetchProfile}
+          toggleForm={toggleForm}
+        />
+      )}
+
     </div>
   );
 }

@@ -22,34 +22,37 @@ export default function GamesList({ showFavorites }) {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleFetchProfile = () => {
+    console.log("getting profile...");
+    axios
+      .get(dbURL)
+      .then((resp) => {
+        setFavoritesList(resp.data);
+      })
+      .catch((err) => console.log(err));
+  };
   useEffect(() => {
     if (isFavorites) {
-      axios
-        .get(dbURL)
-        .then((resp) => {
-          setFavoritesList(resp.data);
-        })
-        .catch((err) => console.log(err));
+      handleFetchProfile();
     }
   }, [isFavorites]);
 
   if (isFavorites)
-    return favoritesList.map((result) => (
-      <GameCard
-        key={result.id}
-        id={result.id}
-        name={result.name}
-        image={result.image}
-        rating={result.metacritic}
-        platforms={result.platforms}
-        genre={result.genres.map((e, i) => {
-          if (i === result.genres.length - 1) {
-            return e.name;
-          }
-          return e.name + ", ";
-        })}
-      />
-    ));
+
+    return favoritesList.map((result) => {
+      return (
+        <GameCard
+          key={result.id}
+          id={result.id}
+          name={result.name}
+          image={result.image}
+          rating={result.rating}
+          platforms={result.platforms}
+          genres={result.genres}
+          handleFetchProfile={handleFetchProfile}
+        />
+      );
+    });
 
   return (
     <div className="flex flex-col">
