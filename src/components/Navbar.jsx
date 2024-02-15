@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import ProfPic from "../assets/ProfPic.jpg";
 import { useTheme } from "./ThemeContext";
 
+import Logo from "../assets/Logo.png";
+
 const Navbar = () => {
   const { darkMode, toggleDarkMode } = useTheme();
 
@@ -17,7 +19,7 @@ const Navbar = () => {
           </Link>
         </div>
         <Link to="/" className="Logo home">
-          <img src="/src/assets/Logo.png" alt="Logo" className="h-10" />
+          <img src={Logo} alt="Logo" className="h-10" />
         </Link>
         <div className="flex items-center space-x-4">
           <button
