@@ -32,8 +32,8 @@ const GameCardMain = (props) => {
           />
         </div>
 
-        <div className="text-md mb-1">{genre}</div>
-        <p className="text-md mb-1">Rating: {rating}</p>
+        <div className="text-lg mb-2">{genre}</div>
+        <p className="text-lg mb-2">Rating: {rating}</p>
         <div className="text-sm">
           <span className="font-bold">Platform:</span>{" "}
           {platforms.map((p, i) => (
