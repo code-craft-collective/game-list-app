@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import GameCard from "../components/Game-Card";
 import SearchBar from "../components/SearchBar";
+import GameCardMain from "../components/GameCardMain";
+
 
 export default function GamesList({ showFavorites }) {
   const [list, setList] = useState([]);
@@ -26,53 +28,57 @@ export default function GamesList({ showFavorites }) {
       axios
         .get(dbURL)
         .then((resp) => {
-          console.log(resp.data);
-          setFavoritesList(resp.data.results);
+          setFavoritesList(resp.data);
         })
         .catch((err) => console.log(err));
     }
   }, [isFavorites]);
 
-  return (
-    <div className="flex flex-wrap justify-evenly overflow-auto">
+  // if (!list.length || !favoritesList.length) return "loading...";
+   <div className="flex flex-wrap justify-evenly overflow-auto">
       <div className="py-20">
         <SearchBar />
       </div>
-      <div>
-        {isFavorites
-          ? favoritesList.map((result) => (
-              <GameCard
-                key={result.id}
-                id={result.id}
-                name={result.name}
-                image={result.background_image}
-                rating={result.metacritic}
-                platforms={result.platforms}
-                genre={result.genres.map((e, i) => {
-                  if (i === result.genres.length - 1) {
-                    return e.name;
-                  }
-                  return e.name + ", ";
-                })}
-              />
-            ))
-          : list.map((result) => (
-              <GameCard
-                key={result.id}
-                id={result.id}
-                name={result.name}
-                image={result.background_image}
-                rating={result.metacritic}
-                platforms={result.platforms}
-                genre={result.genres.map((e, i) => {
-                  if (i === result.genres.length - 1) {
-                    return e.name;
-                  }
-                  return e.name + ", ";
-                })}
-              />
-            ))}
+  if (isFavorites)
+    return favoritesList.map((result) => {
+      return (
+        <GameCard
+          key={result.id}
+          id={result.id}
+          name={result.name}
+          image={result.image}
+          rating={result.metacritic}
+          platforms={result.platforms}
+          genre={result.genres.map((e, i) => {
+            if (i === result.genres.length - 1) {
+              return e.name;
+            }
+            return e.name + ", ";
+          })}
+        />
+      );
+    });
+
+  return list.map((result) => (
+   <div className="flex flex-wrap justify-evenly overflow-auto">
+      <div className="py-20">
+        <SearchBar />
       </div>
-    </div>
-  );
+    <GameCardMain
+      key={result.id}
+      id={result.id}
+      name={result.name}
+      image={result.background_image}
+      rating={result.metacritic}
+      platforms={result.platforms}
+      genre={result.genres.map((e, i) => {
+        if (i === result.genres.length - 1) {
+          return e.name;
+        }
+        return e.name + ", ";
+      })}
+    />
+  ));
+  </div>
+
 }
