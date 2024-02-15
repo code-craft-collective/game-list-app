@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-export default function GameCardMain(props) {
+
+const GameCardMain = (props) => {
   const { id, name, image, rating, genre, platforms } = props;
 
   const [savedGames, setSavedGames] = useState([]);
@@ -17,24 +18,34 @@ export default function GameCardMain(props) {
   }, []);
 
   return (
-    <div className="game-card p-10 m-10 border border-solid border-black">
-      <Link to={`/games/${id}`}>
-        <h3 className="text-xl my-2">{name}</h3>
-        <div className="w-64">
-          <img src={image} className="my-3 w-auto" alt="thumbnail" />
+    <div
+      className="game-card p-6 m-6 border rounded-lg overflow-hidden bg-gray-800 text-white shadow-md"
+      style={{ width: "400px", height: "420px" }}
+    >
+      <Link to={`/games/${id}`} className="flex flex-col h-full">
+        <h3 className="text-1xl mb-1">{name}</h3>
+        <div className="w-full h-48 overflow-hidden mb-2">
+          <img
+            src={image}
+            className="w-full h-full object-cover"
+            alt="thumbnail"
+          />
         </div>
 
-        <div className="text-lg">{genre}</div>
-        <p className="text-sm">Rating: {rating}</p>
-        <div className="w-30 my-3">
-          <div className="text-ls">Platform: </div>
+        <div className="text-md mb-1">{genre}</div>
+        <p className="text-md mb-1">Rating: {rating}</p>
+        <div className="text-sm">
+          <span className="font-bold">Platform:</span>{" "}
           {platforms.map((p, i) => (
-            <p key={i + p.platform.name} className="text-sm">
+            <span key={i + p.platform.name}>
               {p.platform.name}
-            </p>
+              {i === platforms.length - 1 ? "" : ", "}
+            </span>
           ))}
         </div>
       </Link>
     </div>
   );
-}
+};
+
+export default GameCardMain;

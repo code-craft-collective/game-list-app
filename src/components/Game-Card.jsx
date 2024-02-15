@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import EditForm from "./Edit-Form";
-
 export default function GameCard(props) {
   const { id, name, image, rating, genres, platforms, handleFetchProfile } =
     props;
   const [savedGames, setSavedGames] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const dbURL = `https://game-app-backend.adaptable.app/saved-games`;
-
   const handleGetProfile = () => {
     axios
       .get(dbURL)
@@ -21,11 +19,9 @@ export default function GameCard(props) {
   useEffect(() => {
     handleGetProfile();
   }, []);
-
   const toggleForm = () => {
     setShowForm(!showForm);
   };
-
   return (
     <div className="w-64 p-3 m-3 border border-solid border-black inline-block">
       <Link to={`/games/${id}`} className="block">

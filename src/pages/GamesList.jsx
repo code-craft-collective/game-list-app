@@ -54,8 +54,8 @@ export default function GamesList({ showFavorites }) {
     });
 
   return (
-    <div className="flex flex-wrap justify-evenly overflow-auto">
-      <div className="py-20">
+    <div className=" flex flex-wrap justify-evenly overflow-auto ">
+      <div className="flex flex-col">
         <SearchBar />
       </div>
       {list.map((result) => (
@@ -74,7 +74,6 @@ export default function GamesList({ showFavorites }) {
           })}
         />
       ))}
-      ;
     </div>
   );
 }
