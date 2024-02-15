@@ -38,7 +38,6 @@ export default function GamesList({ showFavorites }) {
   }, [isFavorites]);
 
   if (isFavorites)
-
     return favoritesList.map((result) => {
       return (
         <GameCard
@@ -55,26 +54,26 @@ export default function GamesList({ showFavorites }) {
     });
 
   return (
-    <div className="flex flex-col">
-      <SearchBar />
-      <div className=" flex flex-wrap justify-evenly overflow-auto ">
-        {list.map((result) => (
-          <GameCardMain 
-            key={result.id}
-            id={result.id}
-            name={result.name}
-            image={result.background_image}
-            rating={result.metacritic}
-            platforms={result.platforms}
-            genre={result.genres.map((e, i) => {
-              if (i === result.genres.length - 1) {
-                return e.name;
-              }
-              return e.name + ", ";
-            })}
-          />
-        ))}
+    <div className=" flex flex-wrap justify-evenly overflow-auto ">
+      <div className="flex flex-col">
+        <SearchBar />
       </div>
+      {list.map((result) => (
+        <GameCardMain
+          key={result.id}
+          id={result.id}
+          name={result.name}
+          image={result.background_image}
+          rating={result.metacritic}
+          platforms={result.platforms}
+          genre={result.genres.map((e, i) => {
+            if (i === result.genres.length - 1) {
+              return e.name;
+            }
+            return e.name + ", ";
+          })}
+        />
+      ))}
     </div>
   );
 }
