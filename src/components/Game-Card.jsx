@@ -24,7 +24,7 @@ export default function GameCard(props) {
           <img src={image} className="my-3 w-full" alt="thumbnail" />
         </div>
         <div className="text-lg">{genre}</div>
-        <p className="text-sm">Rating: {rating}</p>
+        <p className="text-sm">Rating:{rating}</p>
         <div className="w-full my-3">
           <div className="text-ls">Platform: </div>
           {platforms.map((p, i) => (

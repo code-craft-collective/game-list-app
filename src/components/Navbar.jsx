@@ -7,7 +7,9 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-800 text-white p-4 fixed top-0 w-full z-10">
       <div className="container mx-auto flex items-center justify-between">
-        <img src="/src/Images/Logo.png" alt="Logo" className="h-10" />
+        <Link to="/" className="Logo home">
+          <img src="/src/assets/Logo.png" alt="Logo" className="h-10" />
+        </Link>
         <div className="flex items-center space-x-4">
           <Link to="/" className="hover:text-gray-300">
             Home
