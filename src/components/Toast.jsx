@@ -50,14 +50,13 @@ const Toast = ({ type }) => {
     <div className={`${visible ? "block" : "hidden"}`}>
       <div style={toastStyle}>
         <div className="flex items-center">
-          <div className="w-5 h-5 bg-white mr-2 rounded-full"></div>
           <div className="fw-bold flex-grow"></div>
           <small className="text-xs"></small>
           <button
             onClick={handleClose}
             className="ml-2 cursor-pointer border-none bg-transparent text-white"
           >
-            Close
+            X
           </button>
         </div>
         <div>{toastMessage}</div>
