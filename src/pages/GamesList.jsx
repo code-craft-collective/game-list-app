@@ -73,7 +73,7 @@ export default function GamesList({ showFavorites }) {
             return e.name + ", ";
           })}
         />
-      ))}{" "}
+      ))}
       ;
     </div>
   );
