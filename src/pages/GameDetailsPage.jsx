@@ -7,7 +7,8 @@ function GameDetailsPage() {
   const { gameID } = useParams();
   const [game, setGame] = useState({});
   const [isFavorite, setIsFavorite] = useState(false);
-
+  const [addSuccess, setAddSuccess] = useState(false);
+  const [removeSuccess, setRemoveSuccess] = useState(false);
   const url = `https://api.rawg.io/api/games/${gameID}?token&key=${
     import.meta.env.VITE_GAMES_API_KEY
   }`;
@@ -46,26 +47,30 @@ function GameDetailsPage() {
         platforms: game.platforms.map((platform) => platform.platform.name),
         genres: game.genres.map((genre) => genre.name),
       });
-      alert("Game added to favorites successfully!");
+      setAddSuccess(true);
+      setRemoveSuccess(false);
     } catch (error) {
       console.error("Error adding game to favorites:", error);
-      alert("Failed to add game to favorites. Please try again later.");
+      setAddSuccess(false);
     }
   };
 
   const handleRemoveFromFavorites = async () => {
     try {
       await axios.delete(`${dbURL}/${gameID}`);
-      alert("Game removed from favorites successfully!");
-      setSavedGames(savedGames.filter((savedGame) => savedGame.id !== gameID));
+      setRemoveSuccess(true);
+      setAddSuccess(false);
     } catch (error) {
       console.error("Error removing game from favorites:", error);
-      alert("Failed to remove game from favorites. Please try again later.");
+      setRemoveSuccess(false);
     }
   };
 
   return (
     <div className="container mx-auto mt-8 flex flex-col items-center bg-gray-800 text-white p-8 rounded-md">
+      {addSuccess && <Toast type="success" />}
+      {removeSuccess && <Toast type="remove" />}
+
       <div className="mb-4">
         <img
           src={game.background_image}

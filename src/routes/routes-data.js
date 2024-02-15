@@ -2,7 +2,7 @@ import ErrorPage from "../pages/ErrorPage";
 import GamesList from "../pages/GamesList";
 import ProfilePage from "../pages/ProfilePage";
 import AboutPage from "../pages/AboutPage";
-import GameDetailsPage from "../pages/GameDeatilsPage";
+import GameDetailsPage from "../pages/GameDetailsPage";
 
 export const routes = [
   { path: "*", Element: ErrorPage },
