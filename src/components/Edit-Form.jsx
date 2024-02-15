@@ -32,17 +32,23 @@ export default function EditForm(props) {
   };
 
   return (
-    <div className="edit-rating">
-      <form onSubmit={handleSubmit}>
-        <label>Rating:</label>
+    <div className="edit-rating flex flex-col items-center">
+      <form onSubmit={handleSubmit} className="mb-4">
+        <label className="mb-2">Rating:</label>
         <input
           type="text"
           name="number"
           value={rating}
           onChange={(e) => setRating(e.target.value)}
+          className="border text-black border-gray-300 p-2 w-full"
         />
 
-        <button type="submit">Update</button>
+        <button
+          className="mt-4 ml-28 bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-300"
+          type="submit"
+        >
+          Update
+        </button>
       </form>
     </div>
   );
