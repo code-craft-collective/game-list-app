@@ -4,7 +4,6 @@ import GameCard from "../components/Game-Card";
 import SearchBar from "../components/SearchBar";
 import GameCardMain from "../components/GameCardMain";
 
-
 export default function GamesList({ showFavorites }) {
   const [list, setList] = useState([]);
   const [favoritesList, setFavoritesList] = useState([]);
@@ -34,11 +33,6 @@ export default function GamesList({ showFavorites }) {
     }
   }, [isFavorites]);
 
-  // if (!list.length || !favoritesList.length) return "loading...";
-   <div className="flex flex-wrap justify-evenly overflow-auto">
-      <div className="py-20">
-        <SearchBar />
-      </div>
   if (isFavorites)
     return favoritesList.map((result) => {
       return (
@@ -59,26 +53,28 @@ export default function GamesList({ showFavorites }) {
       );
     });
 
-  return list.map((result) => (
-   <div className="flex flex-wrap justify-evenly overflow-auto">
+  return (
+    <div className="flex flex-wrap justify-evenly overflow-auto">
       <div className="py-20">
         <SearchBar />
       </div>
-    <GameCardMain
-      key={result.id}
-      id={result.id}
-      name={result.name}
-      image={result.background_image}
-      rating={result.metacritic}
-      platforms={result.platforms}
-      genre={result.genres.map((e, i) => {
-        if (i === result.genres.length - 1) {
-          return e.name;
-        }
-        return e.name + ", ";
-      })}
-    />
-  ));
-  </div>
-
+      {list.map((result) => (
+        <GameCardMain
+          key={result.id}
+          id={result.id}
+          name={result.name}
+          image={result.background_image}
+          rating={result.metacritic}
+          platforms={result.platforms}
+          genre={result.genres.map((e, i) => {
+            if (i === result.genres.length - 1) {
+              return e.name;
+            }
+            return e.name + ", ";
+          })}
+        />
+      ))}{" "}
+      ;
+    </div>
+  );
 }
