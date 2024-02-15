@@ -24,15 +24,34 @@ export default function GameCard(props) {
 
   const toggleForm = () => {
     setShowForm(!showForm);
+
   };
 
   return (
-    <div className="w-64 p-3 m-3 border border-solid border-black inline-block">
-      <Link to={`/games/${id}`} className="block">
-        <h3 className="text-xl my-2">{name}</h3>
-        <div className="w-full">
-          <img src={image} className="my-3 w-full" alt="thumbnail" />
+    <div className="container mx-auto mt-8 ">
+      <div className="bg-gray-800 text-white p-8 rounded-md shadow-lg">
+        <div className="mb-4 ">
+          <img
+            src={image}
+            alt={name}
+            className="w-60 h-60 object-cover rounded-md shadow-md"
+          />
         </div>
+        <div className="text-center mb-4 ">
+          <button
+            onClick={
+              savedGames.some((e) => e.id === +id)
+                ? handleRemoveFromFavorites
+                : handleAddToFavorites
+            }
+            className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-300 "
+          >
+            {savedGames.some((e) => e.id === +id)
+              ? "Remove from Favorites"
+              : "Add to Favorites"}
+          </button>
+        </div>
+
         <div className="text-lg">Genres:</div>
         {genres &&
           genres.map((genre, i) => (
@@ -59,6 +78,7 @@ export default function GameCard(props) {
           toggleForm={toggleForm}
         />
       )}
+
     </div>
   );
 }

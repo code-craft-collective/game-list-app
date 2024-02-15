@@ -67,15 +67,15 @@ function GameDetailsPage() {
   };
 
   return (
-    <div className="container mx-auto mt-8 flex flex-col items-center bg-gray-800 text-white p-8 rounded-md">
+    <div className="container mx-auto mt-14 flex flex-col items-center bg-gray-800 text-white p-8 rounded-md">
       {addSuccess && <Toast type="success" />}
       {removeSuccess && <Toast type="remove" />}
 
-      <div className="mb-4">
+      <div className="mb-8">
         <img
           src={game.background_image}
           alt={game.name}
-          className="w-60 h-60 object-cover rounded-md shadow-md"
+          className="w-80 h-80 object-cover rounded-md shadow-md"
         />
       </div>
       <div className="text-center mb-4">
