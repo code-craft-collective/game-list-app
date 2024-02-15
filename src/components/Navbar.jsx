@@ -9,8 +9,6 @@ const Navbar = () => {
     <nav className="bg-gray-800 text-white p-4 fixed top-0 w-full z-10">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center space-x-4 ml-6">
-          {" "}
-          {/* Increased ml-6 for more left margin */}
           <Link to="/" className="hover:text-gray-300">
             Home
           </Link>
