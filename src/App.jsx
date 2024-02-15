@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useTheme } from "./components/ThemeContext";
 import "./App.css";
-// import Toast from "./components/Toast";
 import RoutesRender from "./routes";
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
         <RoutesRender />
       </ThemeSwitcher>
       <Footer />
-      {/* <Toast /> */}
     </div>
   );
 }
