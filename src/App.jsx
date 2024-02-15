@@ -3,20 +3,19 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useTheme } from "./components/ThemeContext";
 import "./App.css";
-import SearchBar from "./components/SearchBar";
-import Toast from "./components/Toast";
+// import Toast from "./components/Toast";
 import RoutesRender from "./routes";
 
 function App() {
   const { darkMode } = useTheme();
   return (
-    <div className={darkMode ? "dark" : "light" + " App"}>
-      <ThemeSwitcher />
+    <div className={darkMode ? "dark" : "light" + "App"}>
       <Navbar />
-      <SearchBar />
-      <RoutesRender />
+      <ThemeSwitcher>
+        <RoutesRender />
+      </ThemeSwitcher>
       <Footer />
-      <Toast />
+      {/* <Toast /> */}
     </div>
   );
 }

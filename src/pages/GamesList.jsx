@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import GameCard from "../components/Game-Card";
+import SearchBar from "../components/SearchBar";
 
 export default function GamesList({ showFavorites }) {
-
   const [list, setList] = useState([]);
   const [favoritesList, setFavoritesList] = useState([]);
   const [isFavorites, setIsFavorites] = useState(showFavorites);
@@ -34,40 +34,45 @@ export default function GamesList({ showFavorites }) {
   }, [isFavorites]);
 
   return (
-    <div className="flex flex-wrap justify-evenly h-screen overflow-auto">
-      {isFavorites
-        ? favoritesList.map((result) => (
-            <GameCard
-              key={result.id}
-              id={result.id}
-              name={result.name}
-              image={result.background_image}
-              rating={result.metacritic}
-              platforms={result.platforms}
-              genre={result.genres.map((e, i) => {
-                if (i === result.genres.length - 1) {
-                  return e.name;
-                }
-                return e.name + ", ";
-              })}
-            />
-          ))
-        : list.map((result) => (
-            <GameCard
-              key={result.id}
-              id={result.id}
-              name={result.name}
-              image={result.background_image}
-              rating={result.metacritic}
-              platforms={result.platforms}
-              genre={result.genres.map((e, i) => {
-                if (i === result.genres.length - 1) {
-                  return e.name;
-                }
-                return e.name + ", ";
-              })}
-            />
-          ))}
+    <div className="flex flex-wrap justify-evenly overflow-auto">
+      <div className="py-20">
+        <SearchBar />
+      </div>
+      <div>
+        {isFavorites
+          ? favoritesList.map((result) => (
+              <GameCard
+                key={result.id}
+                id={result.id}
+                name={result.name}
+                image={result.background_image}
+                rating={result.metacritic}
+                platforms={result.platforms}
+                genre={result.genres.map((e, i) => {
+                  if (i === result.genres.length - 1) {
+                    return e.name;
+                  }
+                  return e.name + ", ";
+                })}
+              />
+            ))
+          : list.map((result) => (
+              <GameCard
+                key={result.id}
+                id={result.id}
+                name={result.name}
+                image={result.background_image}
+                rating={result.metacritic}
+                platforms={result.platforms}
+                genre={result.genres.map((e, i) => {
+                  if (i === result.genres.length - 1) {
+                    return e.name;
+                  }
+                  return e.name + ", ";
+                })}
+              />
+            ))}
+      </div>
     </div>
   );
 }
