@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import GameCard from "../components/Game-Card";
+import SearchBar from "../components/SearchBar";
 import GameCardMain from "../components/GameCardMain";
 
 export default function GamesList({ showFavorites }) {
@@ -32,7 +33,6 @@ export default function GamesList({ showFavorites }) {
     }
   }, [isFavorites]);
 
-  // if (!list.length || !favoritesList.length) return "loading...";
   if (isFavorites)
     return favoritesList.map((result) => {
       return (
@@ -53,20 +53,28 @@ export default function GamesList({ showFavorites }) {
       );
     });
 
-  return list.map((result) => (
-    <GameCardMain
-      key={result.id}
-      id={result.id}
-      name={result.name}
-      image={result.background_image}
-      rating={result.metacritic}
-      platforms={result.platforms}
-      genre={result.genres.map((e, i) => {
-        if (i === result.genres.length - 1) {
-          return e.name;
-        }
-        return e.name + ", ";
-      })}
-    />
-  ));
+  return (
+    <div className="flex flex-wrap justify-evenly overflow-auto">
+      <div className="py-20">
+        <SearchBar />
+      </div>
+      {list.map((result) => (
+        <GameCardMain
+          key={result.id}
+          id={result.id}
+          name={result.name}
+          image={result.background_image}
+          rating={result.metacritic}
+          platforms={result.platforms}
+          genre={result.genres.map((e, i) => {
+            if (i === result.genres.length - 1) {
+              return e.name;
+            }
+            return e.name + ", ";
+          })}
+        />
+      ))}{" "}
+      ;
+    </div>
+  );
 }

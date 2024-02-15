@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import ProfPic from "../assets/ProfPic.jpg";
+import { useTheme } from "./ThemeContext";
 
 const Navbar = () => {
+  const { darkMode, toggleDarkMode } = useTheme();
   return (
     <nav className="bg-gray-800 text-white p-4 fixed top-0 w-full z-10">
       <div className="container mx-auto flex items-center justify-between">
@@ -13,9 +15,19 @@ const Navbar = () => {
           <Link to="/About" className="hover:text-gray-300">
             About
           </Link>
-          <Link to="Games" className="hover:text-gray-300">
-            Games
-          </Link>
+        </div>
+        <div>
+          {" "}
+          <button
+            onClick={toggleDarkMode}
+            className={`px-4 py-2 rounded-full ${
+              darkMode ? "bg-white-400 dark:bg-white-800" : "bg-gray-800"
+            } ${
+              darkMode ? "text-gray-900 dark:text-gray-100" : "text-white"
+            } transition-colors duration-200`}
+          >
+            {darkMode ? "☀︎" : "☾"}
+          </button>
         </div>
         <div>
           <Link to="/profile">
